@@ -1,6 +1,6 @@
 #ifndef DRIVER_H
 #define DRIVER_H
-
+#endif
 unsigned char keys[128] =
 	{
 		0,  27, '1', '2', '3', '4', '5', '6', '7', '8',	/* 9 */
@@ -40,5 +40,8 @@ unsigned char keys[128] =
 		0,	/* F12 Key */
 		0,	/* All other keys are undefined */
 	};
-	
-	#endif
+
+void replace_ISR(int);
+void my_printk(char *);
+irq_handler_t irq_handler(int, void *, struct pt_regs *);
+int get_msb(unsigned char);

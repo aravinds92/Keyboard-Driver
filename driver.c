@@ -1,26 +1,19 @@
-#include<linux/interrupt.h>
-#include<asm/io.h>
+#include <linux/interrupt.h>
+#include <asm/io.h>
 #include <asm/irq_vectors.h>
 #include "driver.h"
-#include<linux/init.h>
-#include<linux/tty.h>
-#include<linux/sched.h>
-#include<asm/uaccess.h>
+#include <linux/init.h>
+#include <linux/tty.h>
+#include <linux/sched.h>
+#include <asm/uaccess.h>
 
 
 //MODULE_LICENSE("GPL");
-
 int ret=1;
-
-void replace_ISR(int);
-void my_printk(char *);
-irq_handler_t irq_handler(int, void *, struct pt_regs *);
-int get_msb(unsigned char);
-
 
 void replace_ISR(int irq)
 {
-	ret = request_irq (irq, (irq_handler_t) irq_handler, IRQF_SHARED, "test_keyboard_irq_handler", "mycookie");
+	ret = request_irq(irq, (irq_handler_t) irq_handler, IRQF_SHARED, "test_keyboard_irq_handler", "mycookie");
 }
 
 int get_msb(unsigned char str)
