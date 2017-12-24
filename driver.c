@@ -6,7 +6,7 @@
 #include <linux/tty.h>
 #include <linux/sched.h>
 #include <asm/uaccess.h>
-
+#include <linux/module.h>
 
 //MODULE_LICENSE("GPL");
 int ret=1;
@@ -43,7 +43,7 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *regs)
 	
 	if(MSB==0)
 	{
-		my_printk((char*)keys[scancode]);
+		my_printk((char*)&keys[scancode]);
 	}
 	
 	else
